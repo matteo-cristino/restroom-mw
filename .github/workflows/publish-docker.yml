@@ -11,9 +11,9 @@ name: Create and publish a Docker image
 
 on:
   push:
-    branches: ['master']
+    branches: ['test']
 
 jobs:
   publish_docker_image:
-    uses: interfacerproject/workflows/.github/workflows/publish-ghcr.yml@main
+    uses: matteo-cristino/workflow/.github/workflows/main.yml@master
     secrets: inherit
