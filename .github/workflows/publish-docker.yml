@@ -15,5 +15,5 @@ on:
 
 jobs:
   publish_docker_image:
-    uses: matteo-cristino/workflows/.github/workflows/publish-ghcr.yml@main
+    uses: matteo-cristino/workflow/.github/workflows/main.yml@master
     secrets: inherit
