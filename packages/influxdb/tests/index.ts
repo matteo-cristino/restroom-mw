@@ -17,7 +17,7 @@ test.before(async (t) => {
   t.context = { app: supertest(app) };
 });
 
-test.skip("Middleware should read from influxDB", async (t) => {
+test("Middleware should read from influxDB", async (t) => {
   const { app } = t.context;
   const res = await app.post("/influxdb_read");
   console.log(res)

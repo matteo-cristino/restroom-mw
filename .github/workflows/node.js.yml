@@ -30,6 +30,14 @@ jobs:
     - uses: supercharge/redis-github-action@1.4.0
       with:
         redis-version: 6
+    - name: Setup InfluxDB
+      uses: influxdata/influxdb-action@v3
+      with:
+        influxdb_version: latest
+        influxdb_org: dyne
+        influxdb_user: ci_user
+        influxdb_password: password
+        influxdb_bucket: dyne
     - run: yarn
     - run: yarn add -W zenroom
     - run: yarn build
