@@ -3,11 +3,7 @@
 
 name: Node.js CI
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name }}
@@ -19,7 +15,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        node-version: [16.13.0, 18]
+        node-version: [18]
 
     steps:
     - uses: actions/checkout@v3
@@ -42,35 +38,3 @@ jobs:
     - run: yarn add -W zenroom
     - run: yarn build
     - run: yarn test
-    - uses: codecov/codecov-action@v3
-      with:
-        token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage/lcov.info
-  publish:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    needs: build
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: "0"
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 16.x
-        registry-url: 'https://registry.npmjs.org'
-    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-    - run: yarn
-    - run: yarn add -W zenroom
-    - run: yarn build
-    - run: git update-index --assume-unchanged package.json
-    - name: Install lerna globally
-      run: npm install --global --loglevel=error lerna
-    - name: Authenticate with Registry and publish
-      run: |
-          yarn logout
-          echo "//registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN" > .npmrc
-          npm whoami
-          lerna publish --no-verify-access -c -y --pre-dist-tag next --preid $(git rev-parse --short HEAD) --force-publish=*
-      env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
