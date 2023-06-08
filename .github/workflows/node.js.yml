@@ -33,9 +33,11 @@ jobs:
         tar xvfz influx_nightly_linux_amd64.tar.gz
         sudo cp influx_nightly_linux_amd64/influx /usr/local/bin/
         sudo cp influx_nightly_linux_amd64/influxd /usr/local/bin/
-        sudo service influxdb start
+        influxd
+        sleep 10
     - name: Setup InfluxDB use
       run: |
+        influx ping
         influx setup \
           --username ci_user \
           --password aaaaaaaaa \
