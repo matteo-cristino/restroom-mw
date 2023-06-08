@@ -33,8 +33,7 @@ jobs:
         influxdb_start: false
     - name: Setup InfluxDB use
       run: |
-        whereis influx
-        ./influx setup \
+        influx setup \
           --username ci_user \
           --password aaaaaaaaa \
           --org dyne \
