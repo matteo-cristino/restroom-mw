@@ -28,9 +28,7 @@ jobs:
         redis-version: 6
     - name: Install & Setup InfluxDB
       run: |
-        echo "deb https://repos.influxdata.com/ubuntu focal stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-        sudo curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-        sudo apt-get update && sudo apt-get install -y influxdb
+        sudo apt-get update && sudo apt-get install -y influxdb2
         influxd &
     - name: Setup InfluxDB use
       run: |
