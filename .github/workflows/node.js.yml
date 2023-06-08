@@ -28,7 +28,7 @@ jobs:
         redis-version: 6
     - name: Install & Setup InfluxDB
       run: |
-        sudo apt-get install -y influxdb
+        sudo apt-get install -y influxdb influx
         influxd &
     - name: Setup InfluxDB use
       run: |
