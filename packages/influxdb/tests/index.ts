@@ -20,9 +20,7 @@ test.before(async (t) => {
 test("Middleware should read from influxDB", async (t) => {
   const { app } = t.context;
   const res = await app.post("/influxdb_read");
-  console.log(res)
   const result = res.body;
-  console.log(result);
   t.is(res.status, 200, res.text);
 });
 
