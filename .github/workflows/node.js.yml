@@ -48,7 +48,7 @@ jobs:
           --force
     - name: Debug
       run: |
-        influx write -b dyne -o dyne -p s 'weather,host=myHost testField="testData" 1686217187982'
+        influx write -b dyne -o dyne -p ms 'weather,host=myHost testField="testData" 1686217187982'
     - run: yarn
     - run: yarn add -W zenroom
     - run: yarn build
