@@ -43,7 +43,7 @@ jobs:
           --password aaaaaaaaa \
           --org dyne \
           --bucket dyne \
-          --retention 24 \
+          --retention 1d \
           --token PO2t9KsbqN4j8mDeIXZ2uqvNtmfcUXRRe2umYZxN1tdVFFG6C93zXm4hudc03jhERsW3tdCmke0dVDLVcycTIw== \
           --force
     - name: Debug
