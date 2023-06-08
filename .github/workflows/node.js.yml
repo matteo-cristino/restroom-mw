@@ -30,10 +30,21 @@ jobs:
       uses: influxdata/influxdb-action@v3
       with:
         influxdb_version: latest
-        influxdb_org: dyne
-        influxdb_user: ci_user
-        influxdb_password: password
-        influxdb_bucket: dyne
+        influxdb_start: false
+    - name: Setup InfluxDB use
+      run: |
+        influx setup \
+          --username ci_user \
+          --password aaaaaaaaa \
+          --org dyne \
+          --bucket dyne \
+          --retention 24 \
+          --token PO2t9KsbqN4j8mDeIXZ2uqvNtmfcUXRRe2umYZxN1tdVFFG6C93zXm4hudc03jhERsW3tdCmke0dVDLVcycTIw== \
+          --force
+    - name: Debug
+      run: |
+        ls -al
+        influx write -b dyne -o dyne -p s 'weather,host=myHost testField="testData" 1556896326'
     - run: yarn
     - run: yarn add -W zenroom
     - run: yarn build
