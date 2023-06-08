@@ -26,11 +26,10 @@ jobs:
     - uses: supercharge/redis-github-action@1.4.0
       with:
         redis-version: 6
-    - name: Setup InfluxDB
-      uses: influxdata/influxdb-action@v3
-      with:
-        influxdb_version: 2.0.7
-        influxdb_start: true
+    - name: Install & Setup InfluxDB
+      run: |
+        sudo apt-get install -y influxdb
+        influxd &
     - name: Setup InfluxDB use
       run: |
         influx setup \
