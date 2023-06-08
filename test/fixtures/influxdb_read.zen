@@ -3,10 +3,10 @@ Rule caller restroom-mw
 Given I connect to influxdb with the connection object named 'influx'
 
 Given I run the query named 'query1' and save the output into 'result1'
-Given I have a 'string' named 'result1'
+Given I have a 'string dictionary' named 'result1'
 
 Given I run the query named 'query2' and save the output into 'result2'
-Given I have a 'string' named 'result2'
+Given I have a 'string dictionary' named 'result2'
 
 Then print the 'result1'
 Then print the 'result2'

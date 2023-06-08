@@ -4,6 +4,6 @@
     "url": "http://localhost:8086",
     "org": "dyne"
   },
-  "query1": "from(bucket:\"dyne\")|> range(start: -1h) |> filter(fn: (r) => r._measurement == \"weather\")",
+  "query1": "from(bucket:\"dyne\")|> range(start: -1h)",
   "query2": "from(bucket:\"dyne\")|> range(start: -1h) |> filter(fn: (r) => r._measurement == \"weather\")"
 }

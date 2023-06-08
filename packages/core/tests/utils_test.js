@@ -149,7 +149,6 @@ test("getContracts works correctly", async (t) => {
     "/http-output",
     "/http-test",
     "/influxdb_read",
-    "/influxdb_write"
     "/keygen",
     "/logger_append",
     "/planetmint_retrieve",
